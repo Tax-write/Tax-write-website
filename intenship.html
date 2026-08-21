@@ -1,0 +1,904 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Internship Application | TaxWrite</title>
+
+    <meta name="description"
+          content="Apply online for an internship at TaxWrite in Accounting, GST, Taxation, Compliance and related fields.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #172554;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #2563eb;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .nav-link:hover {
+            color: #2563eb;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background:
+                radial-gradient(circle at top right, rgba(37,99,235,0.14), transparent 35%),
+                linear-gradient(135deg, #eff6ff, #ffffff);
+            padding: 70px 20px 55px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 7px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            color: #0f172a;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: auto;
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            max-width: 1050px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .application-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(15,23,42,0.07);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 28px 32px;
+            border-bottom: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+
+        .card-header h2 {
+            font-size: 22px;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .card-header p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .form-container {
+            padding: 32px;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 650;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        label span {
+            color: #dc2626;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #0f172a;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input::placeholder {
+            color: #94a3b8;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+        }
+
+        .helper-text {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        /* =========================
+           INTERNSHIP FIELDS
+        ========================= */
+
+        .field-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+        }
+
+        .field-info h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .field-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .field-tag {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #dbeafe;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           TERMS
+        ========================= */
+
+        .terms {
+            margin-top: 24px;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            color: #64748b;
+            font-size: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .terms input {
+            width: auto;
+            height: auto;
+            margin-right: 7px;
+            vertical-align: middle;
+        }
+
+        /* =========================
+           SUBMIT
+        ========================= */
+
+        .submit-area {
+            margin-top: 28px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .submit-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 13px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 8px 20px rgba(37,99,235,0.20);
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 12px 25px rgba(37,99,235,0.25);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 70px;
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer strong {
+            color: #ffffff;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        .success-message {
+            display: none;
+            margin-top: 22px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .nav-container {
+                padding: 14px 18px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .hero {
+                padding: 50px 18px 40px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .main {
+                margin: 30px auto;
+                padding: 0 14px;
+            }
+
+            .card-header {
+                padding: 22px 20px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .submit-area {
+                display: block;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="https://www.taxwrite.org/" class="logo">
+            Tax<span>Write</span>
+        </a>
+
+        <a href="https://www.taxwrite.org/" class="nav-link">
+            ← Back to Website
+        </a>
+    </div>
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-badge">
+        INTERNSHIP PROGRAM
+    </div>
+
+    <h1>
+        Start Your Career With <span>TaxWrite</span>
+    </h1>
+
+    <p>
+        Gain practical industry exposure in Accounting, GST, Taxation,
+        Compliance and Business Services.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     APPLICATION FORM
+========================= -->
+
+<main class="main">
+
+    <div class="application-card">
+
+        <div class="card-header">
+            <h2>Internship Application</h2>
+            <p>
+                Fill in your details below to apply for an internship opportunity.
+            </p>
+        </div>
+
+        <div class="form-container">
+
+            <!--
+                FREE FORM SERVICE
+                FormSubmit.co
+
+                Change the email below if required.
+            -->
+
+            <form
+                id="internshipForm"
+                action="https://formsubmit.co/official@taxwrite.org"
+                method="POST"
+            >
+
+                <!-- FormSubmit settings -->
+
+                <input type="hidden" name="_subject"
+                       value="New Internship Application - TaxWrite">
+
+                <input type="hidden" name="_captcha"
+                       value="false">
+
+                <input type="hidden" name="_template"
+                       value="table">
+
+                <input type="hidden" name="_next"
+                       value="https://www.taxwrite.org/internship.html">
+
+                <div class="form-grid">
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+                        <label for="studentName">
+                            Student Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            name="Student Name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- COLLEGE REG NO -->
+
+                    <div class="form-group">
+                        <label for="regNo">
+                            College Registration No. <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="regNo"
+                            name="College Registration No"
+                            placeholder="Enter college register number"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- COLLEGE NAME -->
+
+                    <div class="form-group full-width">
+                        <label for="college">
+                            College Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="college"
+                            name="College Name"
+                            placeholder="Enter your college / university name"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+                        <label for="email">
+                            Email Address <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="Email"
+                            placeholder="student@example.com"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+                        <label for="phone">
+                            Phone Number <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="Phone Number"
+                            placeholder="Enter 10 digit mobile number"
+                            pattern="[6-9][0-9]{9}"
+                            maxlength="10"
+                            required
+                        >
+
+                        <div class="helper-text">
+                            Enter a valid 10-digit Indian mobile number.
+                        </div>
+                    </div>
+
+
+                    <!-- YEAR -->
+
+                    <div class="form-group">
+                        <label for="year">
+                            Year of Study <span>*</span>
+                        </label>
+
+                        <select id="year" name="Year of Study" required>
+
+                            <option value="">
+                                Select year
+                            </option>
+
+                            <option value="1st Year">
+                                1st Year
+                            </option>
+
+                            <option value="2nd Year">
+                                2nd Year
+                            </option>
+
+                            <option value="3rd Year">
+                                3rd Year
+                            </option>
+
+                            <option value="4th Year">
+                                4th Year
+                            </option>
+
+                            <option value="Final Year">
+                                Final Year
+                            </option>
+
+                            <option value="Graduate">
+                                Graduate
+                            </option>
+
+                            <option value="Post Graduate">
+                                Post Graduate
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <!-- COURSE -->
+
+                    <div class="form-group">
+                        <label for="course">
+                            Course / Degree <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="course"
+                            name="Course"
+                            placeholder="e.g. B.Com, BBA, BCA, MBA"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- INTERNSHIP FIELD -->
+
+                    <div class="form-group full-width">
+
+                        <label for="interest">
+                            Interested Internship Field <span>*</span>
+                        </label>
+
+                        <select
+                            id="interest"
+                            name="Interested Internship Field"
+                            required
+                        >
+
+                            <option value="">
+                                Select your preferred field
+                            </option>
+
+                            <option value="Accounting">
+                                Accounting
+                            </option>
+
+                            <option value="GST">
+                                GST & GST Compliance
+                            </option>
+
+                            <option value="Income Tax">
+                                Income Tax / ITR
+                            </option>
+
+                            <option value="TDS">
+                                TDS & TDS Compliance
+                            </option>
+
+                            <option value="Bookkeeping">
+                                Bookkeeping & Accounts
+                            </option>
+
+                            <option value="Audit">
+                                Audit & Compliance
+                            </option>
+
+                            <option value="Company Registration">
+                                Company / LLP Registration
+                            </option>
+
+                            <option value="Business Compliance">
+                                Business Compliance
+                            </option>
+
+                            <option value="Taxation">
+                                Taxation
+                            </option>
+
+                            <option value="Accounting Software">
+                                Accounting Software / ERP
+                            </option>
+
+                            <option value="Technology">
+                                Technology & Digital Accounting
+                            </option>
+
+                            <option value="Multiple Fields">
+                                Multiple / Combined Fields
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FIELD INFORMATION -->
+
+                <div class="field-info">
+
+                    <h3>
+                        Internship Areas
+                    </h3>
+
+                    <div class="field-list">
+
+                        <div class="field-tag">
+                            Accounting
+                        </div>
+
+                        <div class="field-tag">
+                            GST
+                        </div>
+
+                        <div class="field-tag">
+                            Income Tax
+                        </div>
+
+                        <div class="field-tag">
+                            TDS
+                        </div>
+
+                        <div class="field-tag">
+                            Bookkeeping
+                        </div>
+
+                        <div class="field-tag">
+                            Audit
+                        </div>
+
+                        <div class="field-tag">
+                            Compliance
+                        </div>
+
+                        <div class="field-tag">
+                            Company Registration
+                        </div>
+
+                        <div class="field-tag">
+                            Digital Accounting
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <label style="font-weight: 400; margin: 0;">
+
+                        <input
+                            type="checkbox"
+                            id="agreement"
+                            required
+                        >
+
+                        I confirm that the information provided above is
+                        accurate and I agree to be contacted by TaxWrite
+                        regarding the internship application.
+
+                    </label>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        id="submitBtn"
+                    >
+                        Submit Internship Application
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="success-message"
+                    id="successMessage"
+                >
+                    Your application is being submitted. Please wait...
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <strong>TaxWrite</strong>
+
+    <p>
+        Making Tax Simple & Digital.
+        Expert tax and compliance services.
+    </p>
+
+    <p>
+        © 2026 TaxWrite. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* =========================================
+       FORM VALIDATION
+    ========================================= */
+
+    const form = document.getElementById("internshipForm");
+
+    const submitBtn = document.getElementById("submitBtn");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    form.addEventListener("submit", function (event) {
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const phonePattern =
+            /^[6-9][0-9]{9}$/;
+
+
+        /* Validate Indian mobile number */
+
+        if (!phonePattern.test(phone)) {
+
+            event.preventDefault();
+
+            alert(
+                "Please enter a valid 10-digit Indian mobile number."
+            );
+
+            document.getElementById("phone").focus();
+
+            return;
+        }
+
+
+        /* Prevent accidental double submission */
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent = "Submitting...";
+
+        successMessage.style.display = "block";
+
+    });
+
+
+    /* =========================================
+       REMOVE SPACES FROM PHONE NUMBER
+    ========================================= */
+
+    document.getElementById("phone")
+        .addEventListener("input", function () {
+
+            this.value =
+                this.value.replace(/\D/g, "").slice(0, 10);
+
+        });
+
+</script>
+
+</body>
+</html>
+```
